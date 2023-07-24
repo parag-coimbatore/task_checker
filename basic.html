@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Section 1: Task Planner Form -->
+        <div class="form-section">
+            <h2>Task Planner</h2>
+            <div class="form-container">
+                <div class="input-group">
+                    <label for="taskName">Task Name:</label>
+                    <input type="text" id="taskName" required>
+                </div>
+
+                <div class="subtask-container">
+                    <label for="subtask1">Subtask 1:</label>
+                    <input type="text" class="subtask" required>
+                </div>
+
+                <div class="subtask-container">
+                    <label for="subtask2">Subtask 2:</label>
+                    <input type="text" class="subtask" required>
+                </div>
+
+                <div class="subtask-container">
+                    <label for="subtask3">Subtask 3:</label>
+                    <input type="text" class="subtask" required>
+                </div>
+
+                <div class="subtask-container">
+                    <label for="subtask4">Subtask 4:</label>
+                    <input type="text" class="subtask" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="status">Status:</label>
+                    <select id="status" required>
+                        <option value="" disabled selected>Select Status</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="complete">Complete</option>
+                        <option value="due-passed">Due Passed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button id="addButton">Add</button>
+                    <button id="saveButton" style="display: none;">Save</button>
+                </div>
+
+                <p class="error" id="errorMessage"></p>
+            </div>
+        </div>
+
+        <!-- Section 2: Search Bar and Task Results Table -->
+        <div class="search-section">
+            <label for="search">Search:</label>
+            <input type="text" id="search" placeholder="Search by Task Name or Status">
+        </div>
+
+        <div class="table-section">
+            <h2>Task Results</h2>
+            <div id="tableContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task Name</th>
+                            <th>Subtasks</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskList">
+                        <!-- Tasks will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
