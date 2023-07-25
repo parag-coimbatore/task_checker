@@ -78,31 +78,27 @@ document.addEventListener('DOMContentLoaded', function () {
         errorMessage.textContent = '';
     }
 
-    // Function to handle date changes and set status based on the dates
     function handleDateChange() {
-        // Get references to the date and status input elements
         const startDateInput = document.getElementById('startDate');
         const endDateInput = document.getElementById('endDate');
         const statusInput = document.getElementById('status');
 
-        // Convert the input dates to JavaScript Date objects and get the current date
         const startDate = new Date(startDateInput.value);
         const endDate = new Date(endDateInput.value);
         const today = new Date();
 
-        // Set the minimum date attribute of the date inputs to today's date
         startDateInput.setAttribute("min", today.toISOString().split("T")[0]);
         endDateInput.setAttribute("min", today.toISOString().split("T")[0]);
 
-        // Set the status based on the input dates
-        if (startDate > today) {
-            statusInput.value = "in-progress";
-        } else if (endDate < today) {
+        if (startDate.getTime() > endDate.getTime()) {
+            statusInput.value = "due-passed";
+        } else if (endDate.getTime() < startDate.getTime()) {
             statusInput.value = "due-passed";
         } else {
             statusInput.value = "complete";
         }
     }
+
 
     // Get references to the date inputs and add event listeners to handle date changes
     const startDateInput = document.getElementById('startDate');
@@ -311,4 +307,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Call the function to clear subtasks on page load
     clearSubtasks();
+
+    // Function to delete the entire table
+    function deleteTable() {
+        const tableBody = document.getElementById('taskList');
+        tableBody.innerHTML = '';
+    }
+
+    // Add event listener to the delete button to clear the entire table
+    const deleteTableButton = document.getElementById('deleteTableButton');
+    deleteTableButton.addEventListener('click', deleteTable);
+
 });
